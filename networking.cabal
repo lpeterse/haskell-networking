@@ -1,0 +1,64 @@
+name:                networking
+version:             0.1.0.0
+synopsis:            An abstract interface for network protocol stacks
+                     (client and server).  
+description:         This abstraction allows the implementation
+                     of network protocol stack layers without requiring
+                     actual dependencies on lower-level layers. This greatly
+                     improves composability and testability of networking code.
+homepage:            https://github.com/lpeterse/haskell-networking#readme
+license:             MIT
+license-file:        LICENSE
+author:              Lars Petersen
+maintainer:          info@lars-petersen.net
+copyright:           2017 Lars Petersen
+category:            Network, Networking
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Networking
+                     , Networking.Socket
+                     , Networking.WebSocket
+                     , Networking.TLS
+                     , Networking.Proxy
+                     , Networking.DummySocket
+  build-depends:       base >= 4.7 && < 5
+                     , attoparsec
+                     , socket
+                     , bytestring
+                     , containers
+                     , websockets
+                     , tls
+                     , x509
+  default-language:    Haskell2010
+
+test-suite test
+  type:
+    exitcode-stdio-1.0
+  default-language:
+    Haskell2010
+  ghc-options:
+    -Wall -fno-warn-orphans
+  hs-source-dirs:
+    test
+  main-is:
+    Test.hs
+  other-modules:
+    ThreadingTest,
+    ProxyTest
+  build-depends:
+      async
+    , base >= 4.8 && < 5
+    , tasty >= 0.11
+    , tasty-hunit
+    , tasty-quickcheck
+    , bytestring
+    , networking
+    , socket
+
+source-repository head
+  type:     git
+  location: https://github.com/lpeterse/haskell-networking

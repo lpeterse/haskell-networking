@@ -1,7 +1,7 @@
 name:                networking
-version:             0.1.0.0
+version:             0.1.1.0
 synopsis:            An abstract interface for network protocol stacks
-                     (client and server).  
+                     (client and server).
 description:         This abstraction allows the implementation
                      of network protocol stack layers without requiring
                      actual dependencies on lower-level layers. This greatly
